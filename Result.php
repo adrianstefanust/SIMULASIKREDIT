@@ -14,37 +14,36 @@
 <thead class="thead-dark">
 <tr>
     <th >Periode</th>
-    <th >Angsuran</th>
+    <th >Angsuran Bunga</th>
     <th >Biaya Admin</th>
     <th >Bunga</th>
     <th >Total Angsuran</th>
 <?php
-    $jml_pinjaman = $_GET['jumlah_pinjaman'];
-    $sk_bunga = $_GET['sk_bunga'];
-    $tenor = $_GET['tenor'];
-    $biaya_admin = $_GET['biaya'];
-    $angsuran = $jml_pinjaman/$tenor;
-    $total = 0;
-    for ($temp = 1; $temp <= $tenor; $temp++) {
-        
-        $bunga = ($jml_pinjaman - (($temp-1)*$angsuran)) * ($sk_bunga/100) / 12;
-        $total_angsuran = $angsuran + $bunga + $biaya_admin;
-        $total +=  $total_angsuran
-        ?>
-        <tr>
-            <td ><?php echo $temp;?></td>
-            <td><?php echo number_format($angsuran,2) ;?></td>
-            <td><?php echo number_format($biaya_admin,2);?></td>
-            <td><?php echo number_format($bunga,2);?></td>
-            <td><?php echo number_format($total_angsuran,2);?></td>
-        </tr>
-        <?php
+$jml_pinjaman = $_GET['jumlah_pinjaman'];
+$sk_bunga = $_GET['sk_bunga'];
+$tenor = $_GET['tenor'];
+$biaya_admin = $_GET['biaya'];
+$angsuran = $jml_pinjaman/$tenor;
+$total = 0;
+for ($temp = 1; $temp <= $tenor; $temp++) {    
+$bunga = ($jml_pinjaman-( ($temp-1)*$angsuran ))*($sk_bunga * 0.01)/12;
+$total_angsuran=$angsuran + $biaya_admin+ $bunga;
+$total +=  $total_angsuran
+ ?>
+<tr>
+<td><?php echo $temp;?></td>
+<td><?php echo number_format($angsuran,3) ;?></td>
+<td><?php echo number_format($biaya_admin,3);?></td>
+<td><?php echo number_format($bunga,3);?></td>
+<td><?php echo number_format($total_angsuran,3);?></td>
+</tr>
+<?php
     } 
 ?>
 <tr>
 </thead>
-    <td colspan="4" ><h4>TOTAL KALKULASI : </h4></td>
-    <td colspan="3" ><?php echo number_format($total,2);?></td>
+    <td colspan="4" ><h4>TOTAL KALKULASI :</td>
+    <td colspan="3" ><?php echo number_format($total,3);?></td>
 </tr>
 </tr>
 </table>
