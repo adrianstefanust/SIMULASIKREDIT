@@ -36,10 +36,10 @@ for ($temp = 1; $temp <= $tenor; $temp++) {
  ?>
 <tr>
     <td><?php echo $temp;?></td>
-    <td><?php echo number_format($angsuran,3) ;?></td>
-    <td><?php echo number_format($biaya_admin,3);?></td>
-    <td><?php echo number_format($bunga,3);?></td>
-    <td><?php echo number_format($total_angsuran,3);?></td>
+    <td>Rp <?php echo number_format($angsuran,2) ;?></td>
+    <td>Rp <?php echo number_format($biaya_admin,2);?></td>
+    <td>Rp <?php echo number_format($bunga,2);?></td>
+    <td>Rp <?php echo number_format($total_angsuran,2);?></td>
 </tr>
 <?php
     } 
@@ -47,15 +47,15 @@ for ($temp = 1; $temp <= $tenor; $temp++) {
 </thead>
 <tr>
     <td colspan="4" ><h4>TOTAL BIAYA ADMIN :</td>
-    <td colspan="3" >Rp <?php echo number_format($b,3);?></td>
+    <td colspan="3" >Rp <?php echo number_format($b,2);?></td>
 </tr>
 <tr>
     <td colspan="4" ><h4>TOTAL BUNGA :</td>
-    <td colspan="3" >Rp <?php echo number_format($bu,3);?></td>
+    <td colspan="3" >Rp <?php echo number_format($bu,2);?></td>
 </tr>
 <tr>
     <td colspan="4" ><h4>TOTAL ANGSURAN :</td>
-    <td colspan="3" >Rp <?php echo number_format($total,3);?></td>
+    <td colspan="3" >Rp <?php echo number_format($total,2);?></td>
 </tr>
 
 </tr>
