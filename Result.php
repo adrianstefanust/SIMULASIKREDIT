@@ -25,26 +25,39 @@ $tenor = $_GET['tenor'];
 $biaya_admin = $_GET['biaya'];
 $angsuran = $jml_pinjaman/$tenor;
 $total = 0;
+$b=0;
+$bu =0;
 for ($temp = 1; $temp <= $tenor; $temp++) {    
-$bunga = ($jml_pinjaman-( ($temp-1)*$angsuran ))*($sk_bunga * 0.01)/12;
-$total_angsuran=$angsuran + $biaya_admin+ $bunga;
-$total +=  $total_angsuran
+    $bunga = ($jml_pinjaman-( ($temp-1)*$angsuran ))*($sk_bunga * 0.01)/12;
+    $bu += $bunga;
+    $total_angsuran=$angsuran + $biaya_admin+ $bunga;
+    $b += $biaya_admin;
+    $total +=  $total_angsuran
  ?>
 <tr>
-<td><?php echo $temp;?></td>
-<td><?php echo number_format($angsuran,3) ;?></td>
-<td><?php echo number_format($biaya_admin,3);?></td>
-<td><?php echo number_format($bunga,3);?></td>
-<td><?php echo number_format($total_angsuran,3);?></td>
+    <td><?php echo $temp;?></td>
+    <td><?php echo number_format($angsuran,3) ;?></td>
+    <td><?php echo number_format($biaya_admin,3);?></td>
+    <td><?php echo number_format($bunga,3);?></td>
+    <td><?php echo number_format($total_angsuran,3);?></td>
 </tr>
 <?php
     } 
 ?>
-<tr>
 </thead>
-    <td colspan="4" ><h4>TOTAL KALKULASI :</td>
-    <td colspan="3" ><?php echo number_format($total,3);?></td>
+<tr>
+    <td colspan="4" ><h4>TOTAL BIAYA ADMIN :</td>
+    <td colspan="3" >Rp <?php echo number_format($b,3);?></td>
 </tr>
+<tr>
+    <td colspan="4" ><h4>TOTAL BUNGA :</td>
+    <td colspan="3" >Rp <?php echo number_format($bu,3);?></td>
+</tr>
+<tr>
+    <td colspan="4" ><h4>TOTAL ANGSURAN :</td>
+    <td colspan="3" >Rp <?php echo number_format($total,3);?></td>
+</tr>
+
 </tr>
 </table>
 </div>
